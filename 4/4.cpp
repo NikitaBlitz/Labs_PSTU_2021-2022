@@ -49,16 +49,20 @@ void push(int*& arr, int& size)
 
 int main()
 {
+	setlocale(LC_ALL, "Russian");
 	int size,k,k1;
+	cout << "Введите длину массива  ";
 	cin >> size;
+	cout << "Введите k  ";
 	cin >> k;
 	int* arr = new int[size];
 	FillArray(arr, size);
+	cout << "Начальный массив ";
 	ShowArray(arr, size);
+	cout << "С введенным к  ";
 	print(arr, size, k-1);
 	push(arr, size);
 	cout <<endl;
-	ShowArray(arr, size);
 	for (int i = 0; i <= size; i++)
 		for (int j = 0; j <= size; j++)
 			if (arr[i] % 2 == 0)
@@ -66,7 +70,9 @@ int main()
 				arr[i] = arr[size - 1];
 				size--;
 			}
+	cout << "Массив без четных чисел  ";
 	ShowArray(arr, size);
 	cin >> k1;
+	cout << "С введенным к  ";
 	print(arr, size, k1 - 1);
 }
