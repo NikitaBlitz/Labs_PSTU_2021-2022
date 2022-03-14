@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -15,23 +15,20 @@ struct List
 	Node* tailnode = nullptr;
 };
 
-void StartList(List& list, char& data)
+void StartList(List& list)
 {
 	Node* newnode = new Node;
+	char data;
+	cin >> data;
 	newnode->data = data;
-	if (list.headnode == nullptr)
-	{
+	if (list.headnode == NULL) {
 		list.headnode = newnode;
 		list.tailnode = newnode;
 		return;
 	}
-	Node* currentnode = list.headnode;
+	Node* currentnode = list.tailnode;
 	newnode->ptr_prev = currentnode;
-	if (currentnode->ptr_next != nullptr)
-	{
-		newnode->ptr_next = currentnode->ptr_next;
-		currentnode->ptr_next->ptr_prev = newnode;
-	}
+	newnode->ptr_next = currentnode->ptr_next;
 	currentnode->ptr_next = newnode;
 	list.tailnode = newnode;
 }
@@ -54,7 +51,7 @@ void addList(List& list)
 	Node* currentnode = list.headnode;
 	cout << "Введите номер:\n";
 	cin >> index;
-	while (count != index-1)
+	while (count != index - 1)
 	{
 		currentnode = currentnode->ptr_next;
 		count++;
@@ -70,13 +67,11 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	List list;
 	int n;
-	char tmp;
 	cout << "Введите размер списка: ";
 	cin >> n;
 	for (int i = 1; i <= n; i++)
 	{
-		cin >> tmp;
-		StartList(list, tmp);
+		StartList(list);
 	}
 	cout << "Изначальный список" << endl;
 	printList(list);
